@@ -2,7 +2,7 @@
 #### Video Demo:
 
 #### Description:
-**Sports club** is a Web app Which is belonging to a local sports club in the city of ** Surathkal, Karnataka, India**,
+**Sports club** is a Web app Which is belonging to a local sports club in the city of **Surathkal, Karnataka, India**,
 which was established established to create an awareness among people about health and fitness.
 This Project was built using python in Flask environment. It also makes use of cs50 SQLite3, Javascript, HTML, CSS, Bootstrap.The javascript is primarily used for setting the clock to IST. The credit for the background Images goes to [Freepik](www.freepik.com/). 
 
