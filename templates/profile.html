@@ -1,0 +1,35 @@
+{% extends "layout2.html" %}
+
+{% block Title %}
+Profile
+{% endblock %}
+{% block main %}
+<div class="page">
+<div class="profile-title mb-5"><h1><u>My Profile</u></h1></div>
+<hr><h5>
+<div class="containers border border-warning">
+<div class="profile-div-1"><ul><li>Registration ID: SR000{{ data.id }}</li>
+    <br><br>
+<br>
+    <li>mail:{{data.mail}}</li>
+<br>
+
+</ul></div>
+
+<div class="profile-div-3"><img src="static/60111.jpg" class="rounded-circle" style="width: 140px; length: 140px;" alt="Cinque Terre"></div>
+
+<div class="profile-div-2"><ul><li>Username: {{ data.username }}</li><br><br><br>
+    <li>Age: {{data.age}}</li>
+
+</ul></div></div></h5>
+
+</div>
+
+{% endblock %}
+
+{% block styles %}
+h1{
+    font-size: 50px;
+}
+{% endblock %}
+

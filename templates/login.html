@@ -1,0 +1,25 @@
+{% extends "layout1.html" %}
+
+{% block Title %}
+Log-in
+{% endblock %}
+
+{% block main %}
+<div class="border border-primary" style="margin-left: 350px; margin-right: 350px; ">
+    <div class="mb-3"><h1> Log In</h1></div>
+    <form action="/login" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-outline-primary" id="btn" type="submit">Log In</button>
+    </form>
+    <form action="/change_pass">
+    <div class="mb-3"><button class="btn btn-link" >Change Password</button></div></div></form>
+{% endblock %}
+
+{% block styles %}
+
+{% endblock %}

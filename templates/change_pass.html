@@ -1,0 +1,27 @@
+{% extends "layout1.html" %}
+
+{% block Title %}
+Change_Password
+{% endblock %}
+
+{% block main %}
+<div class="border border-primary" style="margin-left: 350px; margin-right: 350px; border-radius:10px;">
+    <div class="mb-3"><h1> Change Password</h1></div>
+    <form action="/change_pass" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="old_pass" placeholder="Current Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="new_pass" placeholder="New Password" pattern="(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{7,}" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="conf_pass" placeholder="Confirm Password" type="password">
+        </div>
+        <button class="btn btn-outline-primary" id="btn" type="submit">Change Password</button>
+    </form>
+    <div class="mb-3"><button class="btn btn-link" href="/logout">Logout</button></div></div>
+{% endblock %}
+
+{% block styles %}
+
+{% endblock %}

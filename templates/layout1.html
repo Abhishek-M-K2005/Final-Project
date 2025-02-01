@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang = "en" >
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco+Guides&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco+Guides&family=Playwrite+VN:wght@100..400&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Macondo&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <script>
+
+          function UpdateClock()
+          {
+            var now = new Date();
+            var minutes = now.getMinutes();
+            var hours = now.getHours();
+            var seconds = now.getSeconds();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12 ;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+            document.getElementById('clock').innerHTML = strTime;
+          }
+          setInterval( UpdateClock, 1000);
+
+        </script>
+        <title>
+            SA:{% block Title %}{% endblock %}
+        </title>
+    </head>
+    <body onload="UpdateClock()" style="background-image: url('{{ url_for('static', filename='freepik1.jpg') }}'); position: relative; background-position: top center; background-repeat: no-repeat; background-size: cover;">
+
+    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+        <!-- Navbar content -->
+
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/" id = "he">Sports Club</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/features">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/sport_register">Sports Competition</a>
+                  </li>
+                  <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                      Me
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item " href="/profile">Profile</a></li>
+                      <li><a class="dropdown-item" href="/mysp">My Sports</a></li>
+
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div id = "clock" style="margin-right: 10px" class = "btn btn-ptimary"></div>
+
+            </div>
+            {% if not session.id %}
+            <form action = "/login" class="d-flex" method="get">
+              <button class="btn btn-outline-dark" style="margin-right: 10px;" type="submit">Login</button>
+            </form>
+
+            <form action="/register" class="d-flex" method="get">
+              <button class="btn btn-outline-dark" type="submit">Register</button>
+            </form>
+            {% else %}
+            <form action = "/logout" class="d-flex" method="get">
+              <button class="btn btn-outline-dark" style="margin-right: 10px;" type="submit"><b>Logout<b></button>
+            </form>
+            <form action = "/change_pass" class="d-flex" method="get">
+              <button class="btn btn-outline-dark" style="margin-right: 10px;" type="submit"><b>Change Password</b></button>
+            </form>
+            {% endif %}
+      </nav>
+      <main class="container py-5 text-center">
+      {% block main%}{% endblock %}</main>
+      <footer><div class="mb-7"><h6><u>Designed and Developed by Abhishek Maruti Karennavar <br>
+      Background <a href="http://www.freepik.com" style="color: green;">Designed by Freepik</a></u></h6></div></footer>
+    </body>
+    <style>
+
+
+        .dropdown-menu {
+          border-radius: 5px;
+          background-color: #212121;
+          border-color: white;
+          color: white;
+
+
+        }
+        .dropdown-item:hover {
+            background-color: #212121; /* Blue background on hover */
+            opacity: 0.8;
+            color: white; /* White text on hover */
+            background-size: contain;
+        }
+        .dropdown-item {
+            color: #ffffff; /* Dark grey text */
+            border: true;
+            border-color: #ffffff;
+
+        }
+        {% block styles %}
+                {% endblock %}
+    </style>
+
+</html>

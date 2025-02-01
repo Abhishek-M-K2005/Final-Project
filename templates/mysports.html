@@ -1,0 +1,45 @@
+{% extends "layout1.html" %}
+{% block Title %}
+My Sports
+{% endblock %}
+{% block main %}
+<div class="mb-5"><h1><u>My Sports</u></h1></div>
+<hr>
+<div style = " background-color: rgba(0,0,0,0.5); margin-top: 25px;" >
+    <table class="table table-striped-dark" style ="color: white; ">
+        <thead>
+            <tr>
+                <th>Sports</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sport in data %}
+            <tr>
+                <form action="/mysp" method = "post">
+                    <td><input type="hidden" name="sports" value="{{ sport.sports }}"><h4>{{ sport.sports }}</h4></td>
+                    <td><button class="btn btn-outline-warning" type = "submit">Remove</button></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block styles %}
+table
+{
+    color: white;
+    background-color: rgba(0, 0.49999, 1, 0.5);
+    border-radius: 15px;
+}
+hr
+{
+    color: white;
+}
+{% endblock %}
+
+
+
+

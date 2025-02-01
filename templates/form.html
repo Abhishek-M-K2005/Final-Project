@@ -1,0 +1,30 @@
+{% extends "layout1.html" %}
+
+{% block Title %}
+Registration Form
+{% endblock %}
+
+{% block main %}
+
+<div class="border border-info" style="margin-left: 350px; margin-right: 350px; border-radius:10px;">
+<H1><u> Sports Registration</u></H1>
+<br>
+<form action="/form" method="post">
+    <SPAN>
+        <div class="mb-4">
+        <select name="sport" class="form-control active"  style="width:110px; margin-right:10px; display: inline-block;">
+            <option disabled selected>sport</option>
+            {% for game in sports %}
+            <option value="{{ game }}">{{ game }}</option>
+            {% endfor %}
+        </select><input class="form-control " type="number" placeholder="Jersey Number" name="Jersey Number" autocomplete="off" min = "1" max="20" style="width: 100px; display: inline-block;"></div>
+       </SPAN>  <div class="mb-3"> <input class="form-control mx-auto w-auto" type="text" pattern="[QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm]+"
+        placeholder="Jersey Name" name="JERSEY_NAME" autocomplete="off" autocomplete="on"></div>
+        <div class="mb-3"><input class="form-control mx-auto w-auto" name="password" type="password" placeholder="Enter Your Password for Safety Reasons" autocomplete="off">
+        </div>
+        <div class="mb-3"><button class="btn btn-info" type="submit"> Register </button></div>
+
+    </form>
+</div>
+
+{% endblock %}

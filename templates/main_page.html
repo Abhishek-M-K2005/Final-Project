@@ -1,0 +1,53 @@
+{% extends "layout1.html" %}
+
+{% block  Title %}
+Home Page
+
+{% endblock %}
+
+{% block main %}
+   <div class="flex"><h3> Welcome to Sports Club Surathkal. We are the group of people determined to bring changes in each one of you. You all are welcome to join us. Don't forget, in the upcoming month we are hosting a Sports Competitions. Want to be a part of it? Well, Explore the NavBar for more.
+   </h3></div>
+   {% if session.id %}
+   <table class="table table-stripped-dark" style="color: white;">
+    <thead>
+        <tr>
+            <th> Sr no.</th>
+            <th>Club ID</th>
+            <th>Name</th>
+            <th>Sports</th>
+        </tr>
+
+    </thead>
+   \
+    {% for data in data3 %}
+
+    <tbody>
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>SR000{{ data.id }}</td>
+            <td>{{ data.username }}</td>
+            <td>{{ data.sports }}</td>
+
+        </tr>
+    </tbody>
+        {% endfor %}
+
+
+   </table>
+   {% endif %}
+
+{% endblock %}
+
+{% block styles %}
+
+.academic {
+    color: #ffffff;
+    margin-bottom: 65px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+{% endblock %}
