@@ -1,4 +1,4 @@
-# ** Sports Club **
+# **Sports Club**
 #### Video Demo:
 
 #### Description:
